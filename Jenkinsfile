@@ -1,37 +1,17 @@
-pipeline {
-       agent any 
-     
-        stages {
-            
-              stage ('---clean---'){
-            
-                steps {
-                      
-                    sh "mvn clean"
-                    }
-
-                   }
-                  
-                 stage('---test--'){
-                      steps{
-
-                       sh "mvn test"
-
-                       }
-
-                    }
-
-                     stage('--package--') {
-                      steps{
-                           sh mvn package"
-                         }
-
-                       }
-
-
-                      }
-
-                    }   
-   
+node ('slave1') {
+   def mvnHome
+   stage('Preparation') { // for display purposes
+    
+      git 'https://github.com/karthickdevops/demo-project.git'
+    
+   }
+   stage('Build') {
+    sh 'ls'
+    
+   }
+   stage('Results') {
+      sh 'echo success'
+   }
+}
                      
                   
