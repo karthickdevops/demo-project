@@ -1,3 +1,4 @@
+
 pipeline {
 
   agent any
@@ -22,7 +23,24 @@ pipeline {
                 sh "mvn test"
             }
         }
-      
+        stage ('Build Docker Image') {
+            steps {
+                sh "docker version"
+                sh "docker build -t karthickdevops/demo-${env.JOB_NAME} ."
+            }
         }
-                  
-                  
+        stage ('Push Docker Artifact') {
+            steps {
+                sh "docker version"
+                sh "docker build -t karthickdevops/demo-${env.JOB_NAME} ."
+            }
+        }
+        stage ('Deploy Docker Image') {
+            steps {
+                sh "docker version"
+                sh "docker build -t karthickdevops/demo-${env.JOB_NAME} ."
+            }
+        }
+    }
+
+}
