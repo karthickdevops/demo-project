@@ -39,7 +39,7 @@ pipeline {
                     fi
                     docker stop demo-app && docker rm demo-app
                     echo existing containers are stopped
-                    docker run --name demo-app -p 8081:8080 barathece91/demo-jenkins
+                    docker run --name demo-app -p 8081:8080 karthik/demo-jenkins
                   '''
             }
         }
