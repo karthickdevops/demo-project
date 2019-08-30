@@ -1,17 +1,28 @@
-node ('slave2') {
-   def mvnHome
-   stage('Preparation') { // for display purposes
-    
-      git 'https://github.com/karthickdevops/demo-project.git'
-    
+pipeline {
+
+  agent any
+  tools {
+        maven 'M3'
    }
-   stage('Build') {
-    sh 'ls'
-    
-   }
-   stage('Results') {
-      sh 'echo success'
-   }
-}
-                     
+  stages {
+        stage ('Checkout') {
+            steps {
+                checkout scm
+             }
+        }
+        stage ('Build') {
+            steps {
+              sh "echo ${env.JOB_NAME}"
+              sh "echo ${env.NAME}"
+              sh "mvn  clean install -DskipTests=true"
+            }
+        }
+         stage ('Test') {
+            steps {
+                sh "mvn test"
+            }
+        }
+      
+        }
+        }             
                   
