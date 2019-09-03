@@ -1,8 +1,8 @@
-node{slave1
-
-  def mvnHome
-  tools {
-        maven 'M3'
+slave1 {
+   def mvnHome
+   stage('Source Code') { 
+      git 'https://github.com/karthickdevops/demo-project.git'
+      mvnHome = tool 'M3'
    }
   stages {
         stage ('Checkout') {
