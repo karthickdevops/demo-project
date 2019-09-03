@@ -1,4 +1,4 @@
-salve1{
+node{slave1
 
   def mvnHome
   tools {
