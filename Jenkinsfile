@@ -1,6 +1,6 @@
-pipeline {
+salve1{
 
-  agent any
+  def mvnHome
   tools {
         maven 'M3'
    }
